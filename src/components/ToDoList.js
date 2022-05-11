@@ -114,7 +114,11 @@ export default function ToDoList() {
         }
       })
       .then(async(response) => {
-        getTodolist();
+        // getTodolist();
+        let objIndex = todolist.findIndex((obj => obj.id == taskId));
+        var array1 = [...todolist];
+        array1[objIndex].checked = !e.target.checked; 
+        setTodolist(array1)
       })
       .catch((error) => {
         console.log(error)
