@@ -43,14 +43,17 @@ export default function ToDoList() {
     }
 
     // To Do List Create Task
-    const createNewTask = () => {
+    const createNewTask = async() => {
 
+      console.log(todolist)
       // Generate order
       if(todolist.length > 0){
-        var maxOrder = todolist.reduce((prev, current) => (prev.order < current.order) ? prev.order : current.order)
+        var maxOrder = await todolist.reduce((prev, current) => (prev.order < current.order) ? prev.order : current.order)
       } else {
         var maxOrder = 1
       }
+
+      console.log(maxOrder)
 
       Axios.post(todoCreateTaskAPI, {
         "task": newTask,
@@ -187,6 +190,8 @@ export default function ToDoList() {
           }
           return data
         })
+
+        console.log(setNewTodolist)
 
         setTodolist(setNewTodolist)
 
